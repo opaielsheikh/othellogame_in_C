@@ -9,7 +9,9 @@
 #include <stdbool.h>
 #include <time.h>
 #include "ValidMove.h"
+// importing libraries 
 
+// declaring variables 
 int playerTurn(int currentTurn);
 int column(char col);
 void playerScores(board infoBoard[], player InfoPlayer[]);
