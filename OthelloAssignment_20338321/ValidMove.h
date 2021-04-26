@@ -9,7 +9,10 @@
 #include <stdbool.h>
 #include <time.h>
 #include "initialise.h"
+// Importing the required files
 
+
+// Function prototypes
 void flipHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns, int row,int start, int end);
 void flipVertical(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end);
 void flipDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end, int side);
