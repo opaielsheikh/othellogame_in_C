@@ -2,17 +2,19 @@
 #include <string.h>
 #include <stdbool.h>
 #include "ValidMove.h"
+// Importing the required files
 
 
 void flipHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns, int row,int start, int end)
-{
-    int i = row;
-    if(start < end){
+{ // Function to flip the disc in horizontal to the other color
+    int i = row; // declaring variables
+
+    if(start < end){ // if the beginning index is less than last it flips index as it goes right in the board
         for(int j=start; j<end;j++){
             strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
         }
     }
-    else{
+    else{ // else it goes left in the board and flip the disc colour
         for(int j=start; j>end;j--){
             strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
         }
@@ -20,14 +22,15 @@ void flipHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns, int
 }
 
 void flipVertical(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end)
-{
-    int j = col;
-    if(start < end){
+{ // Function to flip the disc in vertical to the other color
+    int j = col; // declaring variables
+
+    if(start < end){ // if the beginning index is less than last it flips index as it goes forward in the board
         for(int i=start; i<end;i++){
             strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
         }
     }
-    else{
+    else{ // else it goes backwards in the board and flip the disc colour
         for(int i=start; i>end;i--){
             strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
         }
@@ -36,30 +39,31 @@ void flipVertical(player InfoPlayer[], board infoBoard[], int playerTurns, int c
 }
 
 void flipDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end, int side)
-{
-    int j = col;
-    if(start < end) {
-        if(side == 1) {
+{ // Function to flip the disc in diagonal to the other color
+    int j = col; // declaring variables
+
+    if(start < end) { // if the beginning index is less than last it flips index as it goes forward in the board
+        if(side == 1) { // side 1 means that its going backward to the right
             for (int i = start; i < end; i++) {
                 strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
                 j++;
             }
         }
-        else if(side == 2){
+        else if(side == 2){ // side 2 means that its going backward to the left
             for (int i = start; i < end; i++) {
                 strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
                 j--;
             }
         }
     }
-    else if(start > end){
-        if(side == 3) {
+    else if(start > end){ // else it goes backwards in the board and flip the disc colour
+        if(side == 3) { // side 3 means that its going backward to the left
             for (int i = start; i > end; i--) {
                 strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
                 j--;
             }
         }
-        else if(side == 4){
+        else if(side == 4){ // side 4 means that its going backward to the right
             for (int i = start; i > end; i--) {
                 strcpy(infoBoard[i].boards[j], InfoPlayer[playerTurns].colour);
                 j++;
@@ -69,7 +73,7 @@ void flipDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns, int c
 }
 
 bool sideDiffHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns)
-{
+{ // Function in Horizontal direction checks if the next one beside it is the same colour if it is returns true else return false
     if(strcmp(infoBoard[infoBoard->rows - 1].boards[infoBoard->columns+1], InfoPlayer[playerTurns].colour) == 0){
         return false;
     }
@@ -82,7 +86,7 @@ bool sideDiffHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns)
 }
 
 bool sideDiffVertical(player InfoPlayer[], board infoBoard[], int playerTurns)
-{
+{ // Function in Vertical direction checks if the next one beside it is the same colour if it is returns true else return false
     if(strcmp(infoBoard[infoBoard->rows].boards[infoBoard->columns], InfoPlayer[playerTurns].colour) == 0){
         return false;
     }
@@ -95,7 +99,7 @@ bool sideDiffVertical(player InfoPlayer[], board infoBoard[], int playerTurns)
 }
 
 bool sideDiffDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns)
-{
+{ // Function in Diagonal direction checks if the next one beside it is the same colour if it is returns true else return false
     if(strcmp(infoBoard[infoBoard->rows].boards[infoBoard->columns+1], InfoPlayer[playerTurns].colour) == 0){
         return false;
     }
@@ -114,7 +118,7 @@ bool sideDiffDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns)
 }
 
 bool emptyCheck(board infoBoard[])
-{
+{ // checks if the square they pick is empty or not if it is empty it returns true else false
     if(strcmp(infoBoard[infoBoard->rows - 1].boards[infoBoard->columns], "   ") == 0)
     {
         return true;
@@ -125,87 +129,95 @@ bool emptyCheck(board infoBoard[])
 }
 
 bool horizontalCheck(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // Function to check if the their is a valid horizontal move 
+    // declaring variables 
     bool checker = false;
     int i= infoBoard->rows - 1, end=0;
-
-    if(sideDiffHorizontal(InfoPlayer, infoBoard, playerTurn)) {
-        for (int j = infoBoard->columns + 1; j < 8; j++) {
-            if(strcmp(infoBoard[i].boards[j], "   ") == 0){
+    
+    
+    if(sideDiffHorizontal(InfoPlayer, infoBoard, playerTurn)) { // make sure the one beside it is not the same colour 
+        for (int j = infoBoard->columns + 1; j < 8; j++) { // loops through the board 
+            if(strcmp(infoBoard[i].boards[j], "   ") == 0){ // if it reaches a blank square it breaks
                 break;
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[i].boards[j]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it, it returns true 
                 end = j;
                 break;
             }
         }
-        for (int j = infoBoard->columns - 1; j > 0; j--) {
-            if(strcmp(infoBoard[i].boards[j], "   ") == 0){
+        for (int j = infoBoard->columns - 1; j > 0; j--) { // loops through the board 
+            if(strcmp(infoBoard[i].boards[j], "   ") == 0){ // if it reaches a blank square it breaks
                 break;
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[i].boards[j]) == 0) {
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it, it returns true 
                 end = j;
                 break;
             }
         }
     }
+    
+    // initialise the index where it is up to if it returns true to be used 
     infoBoard->horizontalEnd = end;
     infoBoard->rowFlip = i;
-    return checker;
+    return checker; // returns the boolean variable 
 }
 
 bool verticalCheck(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // Function to check if the their is a valid vertical move 
+    // declaring variables 
     bool checker = false;
     int i= infoBoard->columns, end=0;
 
-    if(sideDiffVertical(InfoPlayer, infoBoard, playerTurn)){
-        for (int j = infoBoard->rows; j < 8; j++) {
-            if(strcmp(infoBoard[j].boards[i], "   ") == 0){
+    if(sideDiffVertical(InfoPlayer, infoBoard, playerTurn)){ // make sure the one beside it is not the same colour 
+        for (int j = infoBoard->rows; j < 8; j++) { // loops through the board 
+            if(strcmp(infoBoard[j].boards[i], "   ") == 0){ // if it reaches a blank square it breaks
                 break;
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[i]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it, it returns true 
                 end = j;
                 break;
             }
         }
-        for (int j = infoBoard->rows - 2; j > 0; j--) {
-            if(strcmp(infoBoard[j].boards[i], "   ") == 0){
+        for (int j = infoBoard->rows - 2; j > 0; j--) { // loops through the board
+            if(strcmp(infoBoard[j].boards[i], "   ") == 0){ // if it reaches a blank square it breaks
                 break;
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[i]) == 0) {
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it it returns true 
                 end = j;
                 break;
             }
         }
     }
 
+    // initialise the index where it is up to if it returns true to be used 
     infoBoard->verticalEnd = end;
-    return checker;
+    return checker; // returns the boolean variable 
 }
 
 bool diagonalCheck(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // Function to check if the their is a valid diagonal move 
+
+    // declaring variables
     bool checker = false;
     int i = infoBoard->columns+1, end=0, index2Forward = infoBoard->columns-1, index2Backwords = infoBoard->columns+1, side=0;
 
-    if(sideDiffDiagonal(InfoPlayer, infoBoard, playerTurn)){
-        for (int j = infoBoard->rows; j < 8; j++) {
+    if(sideDiffDiagonal(InfoPlayer, infoBoard, playerTurn)){ // make sure the one beside it is not the same colour 
+        for (int j = infoBoard->rows; j < 8; j++) { // loops through the board
             if(strcmp(infoBoard[j].boards[i], "   ") == 0 && strcmp(infoBoard[j].boards[index2Forward], "   ") == 0){
-                break;
+                break; // if it reaches a blank square it breaks
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[i]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it it returns true 
                 end = j;
                 side = 1;
                 break;
             }
             if(strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[index2Forward]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it it returns true 
                 end = j;
                 side = 2;
                 break;
@@ -213,19 +225,19 @@ bool diagonalCheck(player InfoPlayer[], board infoBoard[], int playerTurn)
             i++;
             index2Forward--;
         }
-        i = infoBoard->columns-1;
-        for (int j = infoBoard->rows - 2; j > 0; j--) {
+        i = infoBoard->columns-1; // reassigning back to its column for the next loop
+        for (int j = infoBoard->rows - 2; j > 0; j--) { // loops through the board
             if(strcmp(infoBoard[j].boards[i], "   ") == 0 && strcmp(infoBoard[j].boards[index2Backwords], "   ") == 0){
-                break;
+                break; // if it reaches a blank square it breaks
             }
             if (strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[i]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it it returns true 
                 end = j;
                 side = 3;
                 break;
             }
             if(strcmp(InfoPlayer[playerTurn].colour, infoBoard[j].boards[index2Backwords]) == 0){
-                checker = true;
+                checker = true; // if it finds the same colour in the board to it it returns true 
                 end = j;
                 side = 4;
                 break;
@@ -235,14 +247,15 @@ bool diagonalCheck(player InfoPlayer[], board infoBoard[], int playerTurn)
         }
     }
 
+    // initialise the index where it is up to if it returns true to be used 
     infoBoard->diagonalEnd = end;
     infoBoard->diagonalSide = side;
 
-    return checker;
+    return checker; // returns the boolean variable 
 }
 
 bool availableMoveChecker(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // Function to check if their is a available move for a specific player if their is it returns true else returns false
     bool check = false;
     if(emptyCheck(infoBoard)){
         if(horizontalCheck(InfoPlayer, infoBoard, playerTurn) && verticalCheck(InfoPlayer, infoBoard, playerTurn) && diagonalCheck(InfoPlayer, infoBoard, playerTurn)){
@@ -269,7 +282,7 @@ bool availableMoveChecker(player InfoPlayer[], board infoBoard[], int playerTurn
 }
 
 bool availableMove(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // check if the move is valid for different possibilities if it is it flips the discs and returns true
     bool check = false;
     if(emptyCheck(infoBoard)){
         if(horizontalCheck(InfoPlayer, infoBoard, playerTurn) && verticalCheck(InfoPlayer, infoBoard, playerTurn) && diagonalCheck(InfoPlayer, infoBoard, playerTurn)){
@@ -314,12 +327,12 @@ bool availableMove(player InfoPlayer[], board infoBoard[], int playerTurn)
 }
 
 bool condition(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // return true if their is a move else returns false 
     return availableMove(InfoPlayer, infoBoard, playerTurn);
 }
 
 bool availablePlayerMoves(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // loops to check if any move is valid if their is it returns true else false 
     bool check = false;
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
@@ -336,7 +349,7 @@ bool availablePlayerMoves(player InfoPlayer[], board infoBoard[], int playerTurn
 }
 
 bool makeMove(player InfoPlayer[], board infoBoard[], int playerTurn)
-{
+{ // function to do the move 
     bool checker = false;
 
     if(condition(InfoPlayer, infoBoard, playerTurn)){
