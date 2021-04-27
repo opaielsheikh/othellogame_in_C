@@ -202,8 +202,6 @@ void playGame(player InfoPlayer[], board infoBoard[])
         playerCurrent = playerTurn(playerCurrent);
     }
     // if their is no more valid move for either player it calls the function that diplays the winner,time,date,score, and append all that info to the file
-    if((availablePlayerMoves(InfoPlayer, infoBoard, 0) == false) && (availablePlayerMoves(InfoPlayer, infoBoard, 1) == false)){
-        end = time(NULL);
-        winnerResultDisplayPrinter(infoBoard, InfoPlayer, difftime(end, start));
-    }
+    end = time(NULL);
+    winnerResultDisplayPrinter(infoBoard, InfoPlayer, difftime(end, start));
 }
