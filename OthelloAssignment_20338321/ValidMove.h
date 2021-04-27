@@ -16,9 +16,6 @@
 void flipHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns, int row,int start, int end);
 void flipVertical(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end);
 void flipDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns, int col,int start, int end, int side);
-bool sideDiffHorizontal(player InfoPlayer[], board infoBoard[], int playerTurns);
-bool sideDiffVertical(player InfoPlayer[], board infoBoard[], int playerTurns);
-bool sideDiffDiagonal(player InfoPlayer[], board infoBoard[], int playerTurns);
 bool emptyCheck(board infoBoard[]);
 bool horizontalCheck(player InfoPlayer[], board infoBoard[], int playerTurn);
 bool verticalCheck(player InfoPlayer[], board infoBoard[], int playerTurn);
