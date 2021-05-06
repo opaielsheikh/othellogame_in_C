@@ -310,7 +310,7 @@ bool condition(player InfoPlayer[], board infoBoard[], int playerTurn)
 bool availablePlayerMoves(player InfoPlayer[], board infoBoard[], int playerTurn)
 { // loops to check if any move is valid if their is it returns true else false
     bool check = false;
-    for(int i=0;i<8;i++){
+    for(int i=1;i<8;i++){
         for(int j=0;j<8;j++){
             infoBoard->rows = i;
             infoBoard->columns = j;
@@ -319,8 +319,10 @@ bool availablePlayerMoves(player InfoPlayer[], board infoBoard[], int playerTurn
                 break;
             }
         }
+        if(check == true){
+            break;
+        }
     }
-
     return check;
 }
 
