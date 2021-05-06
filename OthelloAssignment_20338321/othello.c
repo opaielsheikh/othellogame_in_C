@@ -94,8 +94,8 @@ void winnerResultDisplayPrinter(board infoBoard[], player InfoPlayer[], time_t t
     ptr = localtime(&lt);
 
     FILE *fptr;
-
-    if((fptr = fopen("/Users/opaiel/CLionProjects/OthelloAssignment_20338321/othello-results.txt", "a")) == NULL){
+     // open to append to the file the result
+    if((fptr = fopen("othello-results.txt", "a")) == NULL){
         puts("Error! File is not opening");
     }
     else{
