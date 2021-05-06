@@ -95,10 +95,11 @@ void winnerResultDisplayPrinter(board infoBoard[], player InfoPlayer[], time_t t
 
     FILE *fptr;
 
-    if((fptr = fopen("othello-results.txt", "a")) == NULL){
+    if((fptr = fopen("/Users/opaiel/CLionProjects/OthelloAssignment_20338321/othello-results.txt", "a")) == NULL){
         puts("Error! File is not opening");
     }
     else{
+        // if statements to check which got the higher score and the append the result to the file
         if(InfoPlayer[0].score > InfoPlayer[1].score){
             fprintf(fptr,"\n %s\n", asctime(ptr));
             fprintf(fptr,"\n%s(Player 1) is the winner! Congrats.\n", InfoPlayer[0].name);
@@ -125,6 +126,7 @@ void winnerResultDisplayPrinter(board infoBoard[], player InfoPlayer[], time_t t
         }
     }
 
+    // if statements to check which got the higher score and print the result to the user
     if(InfoPlayer[0].score > InfoPlayer[1].score){
         printf("\n %s\n", asctime(ptr));
         printf("\n%s(Player 1) is the winner! Congrats.\n", InfoPlayer[0].name);
@@ -171,11 +173,11 @@ void playGame(player InfoPlayer[], board infoBoard[])
     }
     // loops while their is a available move
     while(availablePlayerMoves(InfoPlayer, infoBoard, 0) || availablePlayerMoves(InfoPlayer, infoBoard, 1)){
-        if(availablePlayerMoves(InfoPlayer, infoBoard, 0) == false){ // if their is no available move for player 1 it passes to the next player
+        if(availablePlayerMoves(InfoPlayer, infoBoard, 0) == false && playerCurrent == 0){ // if their is no available move for player 1 it passes to the next player
             printf("\nNo available moves for %s(player 1), Passed to the next player\n", InfoPlayer[0].name);
             playerCurrent = 1;
         }
-        if(availablePlayerMoves(InfoPlayer, infoBoard, 1) == false){ // if their is no available move for player 1 it passes to the next player
+        if(availablePlayerMoves(InfoPlayer, infoBoard, 1) == false && playerCurrent == 1){ // if their is no available move for player 1 it passes to the next player
             printf("\nNo available moves for %s(player 2), Passed to the next player\n", InfoPlayer[1].name);
             playerCurrent = 0;
         }
@@ -202,6 +204,6 @@ void playGame(player InfoPlayer[], board infoBoard[])
         playerCurrent = playerTurn(playerCurrent);
     }
     // if their is no more valid move for either player it calls the function that diplays the winner,time,date,score, and append all that info to the file
-    end = time(NULL);
-    winnerResultDisplayPrinter(infoBoard, InfoPlayer, difftime(end, start));
+        end = time(NULL);
+        winnerResultDisplayPrinter(infoBoard, InfoPlayer, difftime(end, start));
 }
