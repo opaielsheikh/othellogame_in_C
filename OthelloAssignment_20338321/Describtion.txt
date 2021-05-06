@@ -1,1 +1,35 @@
+I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other plyer will be the other player.
+Than created a player struct that will save two players name colour and score.
 
+I than created a board struct that will save the following values,
+programmed another function to initialise the beginning of the board i initialised the score to two for each player, and set the black and white for the four middle squares 
+
+i designed it as 8 rows and 8 columns and gave each player either a black represented as (B) or White (W)
+as it looks more aesthetic to the players.
+and maked the score at the top of the board for each player which i created a function that counts the 
+score for each player by comparing the colour if their it increment or decrement every round 
+as shown here.
+
+	Score: opai(Black (B)) 2:2 Josh(White (W))
+
+     a     b     c     d     e     f     g     h  
+   _____ _____ _____ _____ _____ _____ _____ _____
+1 |     |     |     |     |     |     |     |     | 1
+   _____ _____ _____ _____ _____ _____ _____ _____
+2 |     |     |     |     |     |     |     |     | 2
+   _____ _____ _____ _____ _____ _____ _____ _____
+3 |     |     |     |     |     |     |     |     | 3
+   _____ _____ _____ _____ _____ _____ _____ _____
+4 |     |     |     | (W) | (B) |     |     |     | 4
+   _____ _____ _____ _____ _____ _____ _____ _____
+5 |     |     |     | (B) | (W) |     |     |     | 5
+   _____ _____ _____ _____ _____ _____ _____ _____
+6 |     |     |     |     |     |     |     |     | 6
+   _____ _____ _____ _____ _____ _____ _____ _____
+7 |     |     |     |     |     |     |     |     | 7
+   _____ _____ _____ _____ _____ _____ _____ _____
+8 |     |     |     |     |     |     |     |     | 8
+   _____ _____ _____ _____ _____ _____ _____ _____
+     a     b     c     d     e     f     g     h  
+
+I than created a function that checks if the move is valid it checks if the current player colour is not the same next to it weither on the right or the left or top or bottom or diagnoal or side ways and also checks 
