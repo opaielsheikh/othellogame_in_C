@@ -1,4 +1,4 @@
-I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other plyer will be the other player.
+I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other plyer will be the other colour.
 Than created a player struct that will save two players name colour and score.
 
 I than created a board struct that will save the following values,
@@ -10,7 +10,7 @@ and maked the score at the top of the board for each player which i created a fu
 score for each player by comparing the colour if their it increment or decrement every round 
 as shown here.
 
-	Score: opai(Black (B)) 2:2 Josh(White (W))
+	Score: opai (Black (B)) 2:2 Josh (White (W))
 
      a     b     c     d     e     f     g     h  
    _____ _____ _____ _____ _____ _____ _____ _____
@@ -32,4 +32,39 @@ as shown here.
    _____ _____ _____ _____ _____ _____ _____ _____
      a     b     c     d     e     f     g     h  
 
-I than created a function that checks if the move is valid it checks if the current player colour is not the same next to it weither on the right or the left or top or bottom or diagnoal or side ways and also checks 
+I than created different functions that checks if the move is valid it checks if the current player colour is not the same next to it weather on the right or the left or top or bottom or diagnoal or side ways and also checks if the after is not an empty space and their is the same colour in the other side of it, if its 
+valid it returns true and a another function check which move was valid either if it was all diagnoal, side ways or vertical and flips them.
+
+I also created a function that check if either player has a valid move so it keeps playing until both haves no move it exit that loop, or if the current player does not have a valid move in that particulare round and the other player haves a valid move it passes the round to the other player with the valid move once the game is over,i created a function that appends the results of the winner weather its a draw or a win to the user and the time taken and the final score and the final board to the file othello-results.txt and the current time after the game is over at the top as shown below e.g,
+
+Thu May  6 12:26:42 2021
+
+
+ubay(Player 2) is the winner! Congrats.
+
+The Time taken for the game: 20 mins
+The Final Score is 20:44
+The Final Board is:
+
+	Score: opai (Black (B)) 44:20 josh (White (W))
+     a     b     c     d     e     f     g     h  
+   _____ _____ _____ _____ _____ _____ _____ _____
+1 | (B) | (B) | (B) | (B) | (B) | (B) | (B) | (B) | 1
+   _____ _____ _____ _____ _____ _____ _____ _____
+2 | (W) | (B) | (W) | (B) | (B) | (W) | (B) | (B) | 2
+   _____ _____ _____ _____ _____ _____ _____ _____
+3 | (W) | (B) | (B) | (W) | (W) | (W) | (B) | (B) | 3
+   _____ _____ _____ _____ _____ _____ _____ _____
+4 | (W) | (B) | (W) | (W) | (W) | (B) | (B) | (B) | 4
+   _____ _____ _____ _____ _____ _____ _____ _____
+5 | (W) | (W) | (B) | (W) | (B) | (W) | (B) | (B) | 5
+   _____ _____ _____ _____ _____ _____ _____ _____
+6 | (W) | (B) | (W) | (B) | (W) | (B) | (B) | (B) | 6
+   _____ _____ _____ _____ _____ _____ _____ _____
+7 | (W) | (B) | (B) | (B) | (B) | (B) | (B) | (B) | 7
+   _____ _____ _____ _____ _____ _____ _____ _____
+8 | (W) | (B) | (B) | (B) | (B) | (B) | (B) | (B) | 8
+   _____ _____ _____ _____ _____ _____ _____ _____
+     a     b     c     d     e     f     g     h  
+
+and also displays it to the player on the terminal.
