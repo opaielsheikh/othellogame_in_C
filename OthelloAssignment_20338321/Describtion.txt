@@ -1,5 +1,5 @@
 I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other plyer will be the other colour.
-Than created a player struct that will save two players name colour and score.
+Than created a player struct that will save two players name, colour and score.
 
 I than created a board struct that will save the following values,
 programmed another function to initialise the beginning of the board i initialised the score to two for each player, and set the black and white for the four middle squares 
