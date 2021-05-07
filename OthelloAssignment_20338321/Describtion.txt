@@ -2,13 +2,37 @@ I first programmed a function that allowed two players to type their name and as
 Than created a player struct that will save two players name, colour and score.
 
 I than created a board struct that will save the following values,
-programmed another function to initialise the beginning of the board i initialised the score to two for each player, and set the black and white for the four middle squares
+programmed another function to initialise the beginning of the board i initialised the score to two for each player, and 
+also included the time at the top so it looks more aesthetic as shown bellow,
+e.g
 
-i designed it as 8 rows and 8 columns and gave each player either a black represented as (B) or White (W)
-as it looks more aesthetic to the players.
+			 Thu May  6 12:06:42 2021
+
+			***  Welcome to Othello!  ***
+
+
+Player 1 please enter your name: josh
+
+Player 2 please enter your name: opai
+
+
+josh(player 1) please chose a colour:
+
+For white type: 1,
+	Or
+For black type: 2,
+1
+
+**josh is White(W)**
+**opai is Black(B)**
+
+I designed the board as 8 rows and 8 columns and gave each player either a black represented as (B) or White (W)
+as it looks more aesthetic to the players, and set the black white for the four middle squares.
 and programmed the score at the top of the board for each player which i created a function that counts the
-score for each player by comparing the colour if their it increment or decrement every round
+score for each player by comparing the colour if their it increment or decrement every round and programmed it to always show the black on the right hand side 
+and the white on the left weather is player 1 or 2 in this case player 2 is opai and he is black colour as josh chose white at the beginning,
 as shown here.
+e.g
 
 	Score: opai (Black (B)) 2:2 Josh (White (W))
 
@@ -38,6 +62,9 @@ Created different functions that checks if the move is valid it checks if the mo
 And loops until they either player has no valid move checked by the following function.
 
 I also created a function that check if either player has a valid move so it keeps playing until both haves no move it exit that loop, or if the current player does not have a valid move in that particulare round and the other player haves a valid move it passes the round to the other player with the valid move once the game is over,i created a function that appends the results of the winner weather its a draw or a win to the user and the time taken and the final score and the final board to the file othello-results.txt and the current time after the game is over at the top as shown below e.g,
+e.g
+
+ Thu May  6 12:26:42 2021
 
 
 opai(Player 2) is the winner! Congrats.
