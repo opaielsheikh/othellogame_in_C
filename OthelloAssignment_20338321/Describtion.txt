@@ -1,18 +1,18 @@
-I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other plyer will be the other colour.
+I first programmed a function that allowed two players to type their name and asked the first one to pick a colour so i know the other player will be the other colour.
 Than created a player struct that will save two players name, colour and score.
 
 I than created a board struct that will save the following values,
-programmed another function to initialise the beginning of the board i initialised the score to two for each player, and set the black and white for the four middle squares 
+programmed another function to initialise the beginning of the board i initialised the score to two for each player, and set the black and white for the four middle squares
 
 i designed it as 8 rows and 8 columns and gave each player either a black represented as (B) or White (W)
 as it looks more aesthetic to the players.
-and maked the score at the top of the board for each player which i created a function that counts the 
-score for each player by comparing the colour if their it increment or decrement every round 
+and programmed the score at the top of the board for each player which i created a function that counts the
+score for each player by comparing the colour if their it increment or decrement every round
 as shown here.
 
 	Score: opai (Black (B)) 2:2 Josh (White (W))
 
-     a     b     c     d     e     f     g     h  
+     a     b     c     d     e     f     g     h
    _____ _____ _____ _____ _____ _____ _____ _____
 1 |     |     |     |     |     |     |     |     | 1
    _____ _____ _____ _____ _____ _____ _____ _____
@@ -30,8 +30,8 @@ as shown here.
    _____ _____ _____ _____ _____ _____ _____ _____
 8 |     |     |     |     |     |     |     |     | 8
    _____ _____ _____ _____ _____ _____ _____ _____
-     a     b     c     d     e     f     g     h  
-     
+     a     b     c     d     e     f     g     h
+
 I than asked the players to enter the move as represented as column than rows where ld where l is the letter from range a->h and d is the digit from 1->8.
 Once they enter the move we save it in the struct and convert the columns in numbers as a represent 0 and b represent 1 etc. and than i pass it in the following function where it checks if its valid or not.
 Created different functions that checks if the move is valid it checks if the move they chose is empty or not and if it is it than checks if the current player colour is not the same next to it weather on the right or the left or top or bottom or diagnoal or side ways and also checks if the after is not an empty space and their is the same colour in the other side of it, if its valid it returns true and a another function check which move was valid either if it was all diagnoal, side ways or vertical and flips them.
@@ -39,10 +39,8 @@ And loops until they either player has no valid move checked by the following fu
 
 I also created a function that check if either player has a valid move so it keeps playing until both haves no move it exit that loop, or if the current player does not have a valid move in that particulare round and the other player haves a valid move it passes the round to the other player with the valid move once the game is over,i created a function that appends the results of the winner weather its a draw or a win to the user and the time taken and the final score and the final board to the file othello-results.txt and the current time after the game is over at the top as shown below e.g,
 
-Thu May  6 12:26:42 2021
 
-
-ubay(Player 2) is the winner! Congrats.
+opai(Player 2) is the winner! Congrats.
 
 The Time taken for the game: 20 mins
 The Final Score is 20:44
