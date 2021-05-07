@@ -31,9 +31,11 @@ as shown here.
 8 |     |     |     |     |     |     |     |     | 8
    _____ _____ _____ _____ _____ _____ _____ _____
      a     b     c     d     e     f     g     h  
-
-I than created different functions that checks if the move is valid it checks if the current player colour is not the same next to it weather on the right or the left or top or bottom or diagnoal or side ways and also checks if the after is not an empty space and their is the same colour in the other side of it, if its 
-valid it returns true and a another function check which move was valid either if it was all diagnoal, side ways or vertical and flips them.
+     
+I than asked the players to enter the move as represented as column than rows where ld where l is the letter from range a->h and d is the digit from 1->8.
+Once they enter the move we save it in the struct and convert the columns in numbers as a represent 0 and b represent 1 etc. and than i pass it in the following function where it checks if its valid or not.
+Created different functions that checks if the move is valid it checks if the move they chose is empty or not and if it is it than checks if the current player colour is not the same next to it weather on the right or the left or top or bottom or diagnoal or side ways and also checks if the after is not an empty space and their is the same colour in the other side of it, if its valid it returns true and a another function check which move was valid either if it was all diagnoal, side ways or vertical and flips them.
+And loops until they either player has no valid move checked by the following function.
 
 I also created a function that check if either player has a valid move so it keeps playing until both haves no move it exit that loop, or if the current player does not have a valid move in that particulare round and the other player haves a valid move it passes the round to the other player with the valid move once the game is over,i created a function that appends the results of the winner weather its a draw or a win to the user and the time taken and the final score and the final board to the file othello-results.txt and the current time after the game is over at the top as shown below e.g,
 
